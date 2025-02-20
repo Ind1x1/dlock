@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dlock-brain-processors
+  namespace: dlock
+data:
+  processors: |
+    running_training_job_optimize_request_processor:
+      name: "running_training_job_optimize_request_processor"

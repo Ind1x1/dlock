@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dlock-brain-service
+  namespace: dlock
+data:
+  config: |
+    namespace: "dlock"
+    data-store.config-map.name: "dlock-data-store"
+    data-store.config-map.key: "datastore"
+    optimizer.config-map.name: "dlock-brain-optimizers"
+    optimizer.config-map.key: "optimizers"
+    optimize-request-processor.config-map.name: "dlock-brain-processors"
+    optimize-request-processor.config-map.key: "processors"

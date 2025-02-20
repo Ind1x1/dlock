@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dlock-kube-monitor
+  name: dlock-kube-monitor
+  namespace: dlock
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dlock-kube-monitor
+  template:
+    metadata:
+      labels:
+        app: dlock-kube-monitor
+      name: dlock-kube-monitor
+      namespace: dlock
+    spec:
+      serviceAccountName: dlock-controller-manager
+      containers:
+        - command:
+            - /bin/bash
+            - -c
+            - (/root/k8smonitor -alsologtostderr --namespace dlock
+              --serviceConfigMapName dlock-kube-monitor
+              --serviceConfigMapKey config 2>&1) |
+              tee /root/logs/kube-monitor.log; exit ${PIPESTATUS[0]}
+          image: registry.cn-hangzhou.aliyuncs.com/dlock/brain:test
+          imagePullPolicy: Always
+          name: dlock-kube-monitor
+          ports:
+            - containerPort: 50001
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+            requests:
+              cpu: 500m
+              memory: 128Mi

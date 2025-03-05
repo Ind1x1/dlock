@@ -1,4 +1,3 @@
----
 apiVersion: elastic.iml.github.io/v1alpha1
 kind: ElasticJob
 metadata:
@@ -13,25 +12,35 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          volumes:
+            - name: dlock-volume
+              persistentVolumeClaim:
+                claimName: dlock-nas-pvc  # 绑定 PVC
+            - name: dlock-shm  # 新增共享内存 volume
+              emptyDir:
+                medium: Memory
+                sizeLimit: 50Gi  # 设置共享内存大小为 50GB
           containers:
             - name: main
-              # yamllint disable-line rule:line-length
-              image: dlock/llama3:fine
+              image: llama3:v11
               imagePullPolicy: Never
               command:
                 - /bin/bash
                 - -c
                 - "dlock-run --nnodes=$NODE_NUM \
-                  --nproc_per_node=1 --max_restarts=1  \
-                  ./examples/llama3/transformer_train.py  \
-                  ./examples/llama3/alpaca_en_demo.json \
-                  ./examples/llama3/Llama-3-1B"
+                  --nproc_per_node=1 --max_restarts=1 \
+                  ./examples/llama3/deepspeed_test.py"
               resources:
                 limits:
                   cpu: "8"
                   memory: 16Gi
-                  nvidia.com/gpu: 1  # optional
+                  nvidia.com/gpu: 1
                 requests:
                   cpu: "4"
                   memory: 16Gi
-                  nvidia.com/gpu: 1  # optional
+                  nvidia.com/gpu: 1
+              volumeMounts:
+                - mountPath: "/dlock/examples/output"
+                  name: dlock-volume
+                - mountPath: "/dev/shm"  # 挂载共享内存
+                  name: dlock-shm

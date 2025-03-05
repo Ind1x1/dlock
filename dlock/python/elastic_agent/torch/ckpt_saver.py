@@ -1068,7 +1068,7 @@ class CommonDirCheckpointSaver(AsyncCheckpointSaver):
                 self.storage.safe_rmtree(step_done_dir)
                 break
 
-            time.sleep(5)
+            time.sleep(10)
         self.storage.commit(step, success)
 
     def persist_to_storage(

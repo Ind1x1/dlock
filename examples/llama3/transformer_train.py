@@ -103,7 +103,7 @@ def train(data_path, model_name_or_path):
     MICRO_BATCH_SIZE = 8
     LEARNING_RATE = 3e-4
     TRAIN_STEPS = 3000
-    OUTPUT_DIR = "experiments"
+    OUTPUT_DIR = "./examples/output"
 
     config = LoraConfig(
         r=LORA_R,

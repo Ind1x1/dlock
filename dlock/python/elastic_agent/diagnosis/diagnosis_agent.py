@@ -1,10 +1,11 @@
-# Copyright 2024 The DLRover Authors. All rights reserved.
+# Copyright 2024
+# DLlock Project Based In Part on Dlrover (a) 2024 Leyi Ye
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
+
 # http://www.apache.org/licenses/LICENSE-2.0
-#
+
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -264,6 +265,7 @@ class DiagnosisAgent(Singleton):
     def _report_failure_to_master(self, failures, restart_count):
         errors = {}
         if len(failures) == 0:
+            logger.info("Skip failure report due to empty failures")
             return
         for rank, failure in failures.items():
             dt = str(datetime.fromtimestamp(int(failure.timestamp)))
@@ -287,7 +289,7 @@ class DiagnosisAgent(Singleton):
             action = self._client.report_heart_beat(ts)
             self._agent_context.enqueue_diagnosis_action(action)
         except Exception as e:
-            logger.warning(f"fail to report a heartbeat: {e}")
+            logger.warning(f"Fail to report a heartbeat: {e}")
 
     def _periodically_report(self):
         logger.info("Start diagnosis agent periodically reporter.")

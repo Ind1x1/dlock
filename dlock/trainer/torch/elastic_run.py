@@ -1,10 +1,11 @@
-# Copyright 2023 The DLRover Authors. All rights reserved.
+# Copyright 2024
+# DLlock Project Based In Part on Dlrover (a) 2024 Leyi Ye
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
+
 # http://www.apache.org/licenses/LICENSE-2.0
-#
+
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -446,7 +447,7 @@ def _check_to_use_dlock_run(master_addr, max_nodes, timeout=120):
 
 
 def run(args):
-    logger.info(f"dlock agent started with: {cu.get_dlock_version()}.")
+    logger.info(f"DLRover agent started with: {cu.get_dlock_version()}.")
     master_handler = None
     master_addr = os.getenv(NodeEnv.DLOCK_MASTER_ADDR, "")
     node_rank = env_utils.get_node_rank()

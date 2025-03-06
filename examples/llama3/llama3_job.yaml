@@ -15,14 +15,14 @@ spec:
           volumes:
             - name: dlock-volume
               persistentVolumeClaim:
-                claimName: dlock-nas-pvc  # 绑定 PVC
-            - name: dlock-shm  # 新增共享内存 volume
+                claimName: dlock-nas-pvc 
+            - name: dlock-shm 
               emptyDir:
                 medium: Memory
-                sizeLimit: 50Gi  # 设置共享内存大小为 50GB
+                sizeLimit: 50Gi 
           containers:
             - name: main
-              image: llama3:v11
+              image: llama:latest
               imagePullPolicy: Never
               command:
                 - /bin/bash
@@ -42,5 +42,5 @@ spec:
               volumeMounts:
                 - mountPath: "/dlock/examples/output"
                   name: dlock-volume
-                - mountPath: "/dev/shm"  # 挂载共享内存
+                - mountPath: "/dev/shm" 
                   name: dlock-shm

@@ -1,10 +1,11 @@
-# Copyright 2022 The DLRover Authors. All rights reserved.
+# Copyright 2024
+# DLlock Project Based In Part on Dlrover (a) 2024 Leyi Ye
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
+
 # http://www.apache.org/licenses/LICENSE-2.0
-#
+
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -114,7 +115,7 @@ class TextDatasetMetric(DatasetMetric):
 
 @deprecated(
     version="0.3.0",
-    reason="You should use dlrover.python.common.grpc.TensorStats",
+    reason="You should use dlock.python.common.grpc.TensorStats",
 )
 class TensorStats(object):
     """TensorStats contains tensor statistics of a deep learning model"""
@@ -127,7 +128,7 @@ class TensorStats(object):
 
 @deprecated(
     version="0.3.0",
-    reason="You should use dlrover.python.common.grpc.OpStats",
+    reason="You should use dlock.python.common.grpc.OpStats",
 )
 class OpStats(object):
     """TensorStats contains OP statistics of a deep learning model"""
@@ -144,7 +145,7 @@ class OpStats(object):
 
 @deprecated(
     version="0.3.0",
-    reason="You should use dlrover.python.common.grpc.ModelInfo",
+    reason="You should use dlock.python.common.grpc.ModelInfo",
 )
 class ModelMetric(object):
     """ModelMetric contains profiling data of a model."""

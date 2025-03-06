@@ -1,4 +1,4 @@
-FROM dlock:ci as builder
+FROM dlock:base as builder
 
 WORKDIR /dlock
 COPY ./ .

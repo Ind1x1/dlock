@@ -1,15 +1,17 @@
-# Copyright 2024 The DLRover Authors. All rights reserved.
+# Copyright 2024
+# DLlock Project Based In Part on Dlrover (a) 2024 Leyi Ye
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
+
 # http://www.apache.org/licenses/LICENSE-2.0
-#
+
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 
 import os
 import random
@@ -37,6 +39,7 @@ from transformers.trainer import (
     is_peft_available,
     logger,
     reissue_pt_warnings,
+    unwrap_model,
 )
 
 from dlock.python.common.storage import PosixDiskStorage
@@ -280,8 +283,8 @@ class FlashCkptTrainer(Trainer):
             if state_dict is None:
                 state_dict = self.model.state_dict()
 
-            if isinstance(self.accelerator.unwarp_model(self.model), supported_classes):
-                self.accelerator.unwarp_model(self.model).save_pretrained(
+            if isinstance(unwrap_model(self.model), supported_classes):
+                unwrap_model(self.model).save_pretrained(
                     output_dir,
                     state_dict=state_dict,
                     safe_serialization=False,

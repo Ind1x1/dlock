@@ -7,7 +7,8 @@ ENV PYTHONUNBUFFERED 0
 
 RUN chmod a+rx /etc/bash.bashrc
 
-RUN sed -i 's|http://archive.ubuntu.com|http://mirrors.aliyun.com|g' /etc/apt/sources.list && \
+RUN sed -i 's|http://deb.debian.org|http://mirrors.aliyun.com|g' /etc/apt/sources.list && \
+    sed -i 's|http://security.debian.org|http://mirrors.aliyun.com/debian-security|g' /etc/apt/sources.list && \
     apt-get update && apt-get install -y \
         unzip \
         curl \

@@ -1,10 +1,11 @@
-# Copyright 2023 The DLRover Authors. All rights reserved.
+# Copyright 2024
+# DLlock Project Based In Part on Dlrover (a) 2024 Leyi Ye
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
+
 # http://www.apache.org/licenses/LICENSE-2.0
-#
+
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -113,7 +114,7 @@ class RayClient(object):
         When Actor is in RUNNING Status, check whether estimator is initiated
         """
         # to do
-        # 使用dlrover python的
+        # 使用dlock python的
         status = None
         res = None
         actor_handle = self.get_actor_handle(actor_name)
@@ -148,7 +149,7 @@ class RayElasticJob(ElasticJob):
     def __init__(self, job_name, namespace):
         """
         ElasticJob manages Pods by K8s Python APIs. The example of an elastic
-        job is in dlrover/go/elasticjob_operator/config/samples/
+        job is in dlock/go/elasticjob_operator/config/samples/
         elastic_v1alpha1_elasticjob.yaml
         Args:
             image_name: Docker image path for ElasticDL pod.

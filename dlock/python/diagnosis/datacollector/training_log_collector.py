@@ -1,10 +1,11 @@
-# Copyright 2024 The DLRover Authors. All rights reserved.
+# Copyright 2024
+# DLlock Project Based In Part on Dlrover (a) 2024 Leyi Ye
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
+
 # http://www.apache.org/licenses/LICENSE-2.0
-#
+
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -35,7 +36,7 @@ class TrainingLogCollector(DataCollector):
         # only collect training logs
         if len(logs) > 0:
             training_start_line = 0
-            start_str = "dlock agent started with:"
+            start_str = "Dlock agent started with:"
             for i in range(len(logs)):
                 if start_str in logs[i]:
                     training_start_line = i

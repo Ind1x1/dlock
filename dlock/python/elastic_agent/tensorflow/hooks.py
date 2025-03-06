@@ -1,10 +1,11 @@
-# Copyright 2022 The DLRover Authors. All rights reserved.
+# Copyright 2024
+# DLlock Project Based In Part on Dlrover (a) 2024 Leyi Ye
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
+
 # http://www.apache.org/licenses/LICENSE-2.0
-#
+
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -61,7 +62,7 @@ def generate_model_info():
 class ReportModelInfoHook(SessionRunHook):
     def __init__(self):
         """Report variables and operators in a model to
-        the dlock master.
+        the DLOCK master.
         """
         self._is_chief = False
         self._training_reporter = TFTrainingReporter.singleton_instance()
@@ -110,4 +111,4 @@ class ElasticDataShardReportHook(SessionRunHook):
         try:
             self._sharding_client.report_batch_done()
         except Exception as ex:
-            logger.error("dlock agent: report batch done failed: %s", ex)
+            logger.error("DLOCK agent: report batch done failed: %s", ex)

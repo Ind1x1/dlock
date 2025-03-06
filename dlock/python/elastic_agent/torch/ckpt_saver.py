@@ -1,10 +1,11 @@
-# Copyright 2023 The DLRover Authors. All rights reserved.
+# Copyright 2024
+# DLlock Project Based In Part on Dlrover (a) 2024 Leyi Ye
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
+
 # http://www.apache.org/licenses/LICENSE-2.0
-#
+
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -47,7 +48,7 @@ from dlock.python.common.multi_process import (
 from dlock.python.common.serialize import ClassMeta
 from dlock.python.elastic_agent.master_client import MasterClient
 
-DLOCK_CKPT_CONFIG_KEY = "_DLOCK_CKPT_CONFIG"
+DLOCK_CKPT_CONFIG_KEY = "_DLORVER_CKPT_CONFIG"
 
 
 class CheckpointSharedObjPrefix:
@@ -1068,7 +1069,7 @@ class CommonDirCheckpointSaver(AsyncCheckpointSaver):
                 self.storage.safe_rmtree(step_done_dir)
                 break
 
-            time.sleep(10)
+            time.sleep(5)
         self.storage.commit(step, success)
 
     def persist_to_storage(
